@@ -6,19 +6,26 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Light Cleaner</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap"/>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
   <style>
+    * {
+      box-sizing: border-box;
+    }
     body {
       font-family: 'Poppins', sans-serif;
       margin: 0;
-      background-color: #f2f2f2;
+      background-color: #f0f8ff;
       color: #111;
+      scroll-behavior: smooth;
     }
     header {
-      background-color: #4fc3f7;
+      background: linear-gradient(90deg, #4fc3f7, #29b6f6);
       color: #fff;
       padding: 1.5rem;
       text-align: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
     }
     nav a {
       color: #fff;
@@ -29,38 +36,86 @@
     .hero {
       background: url('https://cdn.pixabay.com/photo/2017/03/02/09/04/car-2117681_1280.jpg') center/cover no-repeat;
       color: #fff;
-      padding: 4rem 2rem;
+      padding: 5rem 2rem;
       text-align: center;
       background-blend-mode: multiply;
-      background-color: rgba(0, 0, 0, 0.4);
+      background-color: rgba(0, 0, 0, 0.5);
+      animation: fadeIn 1.5s ease-in-out;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-10px);}
+      to { opacity: 1; transform: translateY(0);}
     }
     .hero h1 {
       font-size: 3rem;
       margin-bottom: 1rem;
     }
     .hero p {
-      font-size: 1.2rem;
+      font-size: 1.3rem;
     }
     .section {
-      padding: 2rem 1rem;
+      padding: 3rem 1rem;
       text-align: center;
     }
     .btn {
-      background-color: #4fc3f7;
+      background-color: #29b6f6;
       color: #fff;
-      padding: 0.8rem 1.5rem;
+      padding: 0.9rem 1.7rem;
       border: none;
       border-radius: 5px;
-      font-size: 1rem;
+      font-size: 1.1rem;
       text-decoration: none;
       display: inline-block;
-      margin-top: 1rem;
+      margin-top: 1.5rem;
+      transition: background 0.3s ease;
+    }
+    .btn:hover {
+      background-color: #0288d1;
+    }
+    .features {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 2rem;
+    }
+    .feature {
+      background: #fff;
+      padding: 1.5rem;
+      border-radius: 10px;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+      max-width: 300px;
+      text-align: center;
+      transition: transform 0.3s ease;
+    }
+    .feature:hover {
+      transform: translateY(-5px);
+    }
+    .feature i {
+      font-size: 2.5rem;
+      color: #4fc3f7;
+      margin-bottom: 1rem;
     }
     footer {
-      background-color: #333;
+      background-color: #222;
       color: #eee;
       padding: 2rem;
       text-align: center;
+    }
+    .whatsapp-float {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background-color: #25d366;
+      color: white;
+      border-radius: 50%;
+      width: 55px;
+      height: 55px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 28px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+      z-index: 1000;
     }
   </style>
 </head>
@@ -68,25 +123,44 @@
   <header>
     <h1>Light Cleaner</h1>
     <nav>
-      <a href="index.html">Accueil</a>
-      <a href="services.html">Services</a>
+      <a href="#services">Services</a>
       <a href="contact.html">Contact</a>
     </nav>
   </header>
 
   <section class="hero">
-    <h1>Votre véhicule, notre priorité</h1>
-    <p>Service de lavage auto professionnel à domicile ou en station</p>
+    <h1>Un lavage éclatant pour votre voiture</h1>
+    <p>Service rapide, propre et professionnel, à domicile ou en station</p>
     <a href="contact.html" class="btn">Réservez maintenant</a>
   </section>
 
-  <section class="section">
-    <h2>Pourquoi choisir Light Cleaner ?</h2>
-    <p>Nous combinons rapidité, efficacité et soin pour un lavage impeccable.</p>
+  <section class="section" id="services">
+    <h2>Nos Services</h2>
+    <div class="features">
+      <div class="feature">
+        <i class="fas fa-car"></i>
+        <h3>Lavage extérieur</h3>
+        <p>Nettoyage soigné de la carrosserie avec produits écologiques</p>
+      </div>
+      <div class="feature">
+        <i class="fas fa-spray-can-sparkles"></i>
+        <h3>Nettoyage intérieur</h3>
+        <p>Aspiration, désinfection et soin des sièges et surfaces</p>
+      </div>
+      <div class="feature">
+        <i class="fas fa-house-user"></i>
+        <h3>Service à domicile</h3>
+        <p>Nous venons jusqu’à vous, où que vous soyez à Lomé</p>
+      </div>
+    </div>
   </section>
 
   <footer>
     <p>&copy; 2025 Light Cleaner - Tous droits réservés.</p>
   </footer>
+
+  <a href="https://wa.me/22892470075" target="_blank" class="whatsapp-float">
+    <i class="fab fa-whatsapp"></i>
+  </a>
 </body>
 </html>
