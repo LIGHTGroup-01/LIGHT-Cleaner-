@@ -7,32 +7,133 @@
     <title>Light Cleaner</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
-        body { font-family: Arial, sans-serif; margin: 0; padding: 0; background: #f5f5f5; color: #333; }
-        header, footer { background-color: #009688; color: white; text-align: center; padding: 1em; }
-        nav a { margin: 0 15px; text-decoration: none; color: white; }
-        section { padding: 20px; }
-        .gallery img { width: 100%; max-width: 300px; margin: 10px; border-radius: 8px; }
-        .faq details { margin-bottom: 10px; }
-        .testimonial { background: white; padding: 10px; margin: 10px; border-left: 5px solid #009688; border-radius: 5px; }
-        form input, form select, form textarea { width: 100%; padding: 10px; margin: 5px 0; }
-        .map-container iframe { width: 100%; height: 300px; border: none; }
-        .language-switcher { position: absolute; top: 10px; right: 10px; }
-        .language-switcher button { margin-left: 5px; }
+        :root {
+            --primary-color: #00796b;
+            --accent-color: #26a69a;
+            --bg-color: #f0f4f4;
+            --text-color: #333;
+            --white: #fff;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        header, footer {
+            background-color: var(--primary-color);
+            color: var(--white);
+            text-align: center;
+            padding: 1rem 0;
+        }
+
+        nav a {
+            margin: 0 15px;
+            text-decoration: none;
+            color: var(--white);
+        }
+
+        section {
+            padding: 2rem;
+            max-width: 1000px;
+            margin: auto;
+        }
+
+        h2 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        .gallery {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1rem;
+        }
+
+        .gallery img {
+            width: 300px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+
+        .testimonial {
+            background: var(--white);
+            padding: 1rem;
+            margin: 1rem 0;
+            border-left: 5px solid var(--accent-color);
+            border-radius: 5px;
+        }
+
+        form input, form select, form textarea, form button {
+            width: 100%;
+            padding: 10px;
+            margin: 8px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        form button {
+            background-color: var(--primary-color);
+            color: var(--white);
+            border: none;
+            cursor: pointer;
+        }
+
+        .map-container iframe {
+            width: 100%;
+            height: 300px;
+            border: none;
+            border-radius: 10px;
+        }
+
+        .faq details {
+            background: var(--white);
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+        }
+
+        .language-switcher {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+        }
+
+        .language-switcher button {
+            background: var(--accent-color);
+            color: var(--white);
+            border: none;
+            margin-left: 5px;
+            padding: 5px 10px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
     </style>
 </head>
 <body>
 
 <header>
     <h1>LIGHT CLEANER</h1>
-    <p>Votre véhicule, notre priorité</p>
+    <p id="tagline">Votre véhicule, notre priorité</p>
 </header>
 
 <div class="language-switcher">
-    <button>FR</button><button>EN</button><button>EWÉ</button>
+    <button onclick="setLang('fr')">FR</button>
+    <button onclick="setLang('en')">EN</button>
+    <button onclick="setLang('ew')">EWÉ</button>
 </div>
 
 <section>
-    <h2>Réservez un lavage</h2>
+    <h2 data-key="bookTitle">Réservez un lavage</h2>
     <form onsubmit="sendToWhatsApp(); return false;">
         <input type="text" id="name" placeholder="Nom" required>
         <input type="tel" id="phone" placeholder="Téléphone" required>
@@ -44,21 +145,19 @@
         </select>
         <input type="date" id="date">
         <input type="time" id="time">
-        <button type="submit">Réserver via WhatsApp</button>
+        <button type="submit" data-key="submit">Réserver via WhatsApp</button>
     </form>
 </section>
 
 <section>
-    <h2>Témoignages</h2>
+    <h2 data-key="testimonials">Témoignages</h2>
     <div class="testimonial">"Service impeccable, rapide et professionnel !" – Koffi</div>
     <div class="testimonial">"Ma voiture n’a jamais été aussi propre." – Afi</div>
     <div class="testimonial">"Je recommande vivement Light Cleaner." – Yao</div>
 </section>
 
 <section class="gallery">
-    <h2>Galerie Avant / Après</h2>
-    <img src="https://via.placeholder.com/300x200?text=Avant" alt="Avant">
-    <img src="https://via.placeholder.com/300x200?text=Après" alt="Après">
+    <h2 data-key="gallery">Galerie Avant / Après</h2>
     <img src="https://via.placeholder.com/300x200?text=Avant" alt="Avant">
     <img src="https://via.placeholder.com/300x200?text=Après" alt="Après">
 </section>
@@ -68,30 +167,65 @@
     <details><summary>Quels types de lavage proposez-vous ?</summary><p>Intérieur, extérieur et complet.</p></details>
     <details><summary>Faites-vous des lavages à domicile ?</summary><p>Oui, dans certaines zones de Lomé.</p></details>
     <details><summary>Quels sont les horaires ?</summary><p>Du lundi au samedi, 8h à 18h.</p></details>
-    <details><summary>Quels sont les tarifs ?</summary><p>Selon le service et le type de véhicule. Contactez-nous.</p></details>
-    <details><summary>Puis-je payer par Mobile Money ?</summary><p>Oui, TMoney et Flooz sont acceptés.</p></details>
 </section>
 
 <section class="map-container">
-    <h2>Nous localiser</h2>
+    <h2 data-key="location">Nous localiser</h2>
     <iframe src="https://www.google.com/maps?q=Be-Kpota,+Lomé,+Togo&output=embed"></iframe>
 </section>
 
 <footer>
-    <p>Contact : +228 92 47 00 75 | WhatsApp disponible</p>
+    <p data-key="contact">Contact : +228 92 47 00 75 | WhatsApp disponible</p>
 </footer>
 
 <script>
     function sendToWhatsApp() {
-        var name = document.getElementById("name").value;
-        var phone = document.getElementById("phone").value;
-        var vehicle = document.getElementById("vehicle").value;
-        var service = document.getElementById("service").value;
-        var date = document.getElementById("date").value;
-        var time = document.getElementById("time").value;
-        var message = `Bonjour LIGHT CLEANER, je suis ${name} (${phone}). Je souhaite un ${service} pour un ${vehicle} le ${date} à ${time}. Merci.`;
-        var url = "https://wa.me/22892470075?text=" + encodeURIComponent(message);
-        window.open(url, '_blank').focus();
+        const name = document.getElementById("name").value;
+        const phone = document.getElementById("phone").value;
+        const vehicle = document.getElementById("vehicle").value;
+        const service = document.getElementById("service").value;
+        const date = document.getElementById("date").value;
+        const time = document.getElementById("time").value;
+        const message = `Bonjour LIGHT CLEANER, je suis ${name} (${phone}). Je souhaite un ${service} pour un ${vehicle} le ${date} à ${time}. Merci.`;
+        window.open("https://wa.me/22892470075?text=" + encodeURIComponent(message), "_blank").focus();
+    }
+
+    const translations = {
+        fr: {
+            tagline: "Votre véhicule, notre priorité",
+            bookTitle: "Réservez un lavage",
+            submit: "Réserver via WhatsApp",
+            testimonials: "Témoignages",
+            gallery: "Galerie Avant / Après",
+            location: "Nous localiser",
+            contact: "Contact : +228 92 47 00 75 | WhatsApp disponible"
+        },
+        en: {
+            tagline: "Your vehicle, our priority",
+            bookTitle: "Book a wash",
+            submit: "Book via WhatsApp",
+            testimonials: "Testimonials",
+            gallery: "Before / After Gallery",
+            location: "Find us",
+            contact: "Contact: +228 92 47 00 75 | WhatsApp available"
+        },
+        ew: {
+            tagline: "Woɖo fia nɔvi aɖe si le woɖe o",
+            bookTitle: "Ne ɖe alo ɖe fiã",
+            submit: "Gblɔ na WhatsApp",
+            testimonials: "Agbɔviwo",
+            gallery: "Esi le gbe / Esi le yi",
+            location: "Nutsu si wòle",
+            contact: "Kɔnta: +228 92 47 00 75 | WhatsApp le ɖe"
+        }
+    };
+
+    function setLang(lang) {
+        const dict = translations[lang];
+        for (let key in dict) {
+            const el = document.querySelector(`[data-key="${key}"]`);
+            if (el) el.textContent = dict[key];
+        }
     }
 </script>
 
