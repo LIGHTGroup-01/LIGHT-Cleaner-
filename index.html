@@ -2,165 +2,98 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Light Cleaner</title>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap"/>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
-  <style>
-    * {
-      box-sizing: border-box;
-    }
-    body {
-      font-family: 'Poppins', sans-serif;
-      margin: 0;
-      background-color: #f0f8ff;
-      color: #111;
-      scroll-behavior: smooth;
-    }
-    header {
-      background: linear-gradient(90deg, #4fc3f7, #29b6f6);
-      color: #fff;
-      padding: 1.5rem;
-      text-align: center;
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-    }
-    nav a {
-      color: #fff;
-      margin: 0 1rem;
-      text-decoration: none;
-      font-weight: bold;
-    }
-    .hero {
-      background: url('https://cdn.pixabay.com/photo/2017/03/02/09/04/car-2117681_1280.jpg') center/cover no-repeat;
-      color: #fff;
-      padding: 5rem 2rem;
-      text-align: center;
-      background-blend-mode: multiply;
-      background-color: rgba(0, 0, 0, 0.5);
-      animation: fadeIn 1.5s ease-in-out;
-    }
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(-10px);}
-      to { opacity: 1; transform: translateY(0);}
-    }
-    .hero h1 {
-      font-size: 3rem;
-      margin-bottom: 1rem;
-    }
-    .hero p {
-      font-size: 1.3rem;
-    }
-    .section {
-      padding: 3rem 1rem;
-      text-align: center;
-    }
-    .btn {
-      background-color: #29b6f6;
-      color: #fff;
-      padding: 0.9rem 1.7rem;
-      border: none;
-      border-radius: 5px;
-      font-size: 1.1rem;
-      text-decoration: none;
-      display: inline-block;
-      margin-top: 1.5rem;
-      transition: background 0.3s ease;
-    }
-    .btn:hover {
-      background-color: #0288d1;
-    }
-    .features {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 2rem;
-    }
-    .feature {
-      background: #fff;
-      padding: 1.5rem;
-      border-radius: 10px;
-      box-shadow: 0 3px 10px rgba(0,0,0,0.1);
-      max-width: 300px;
-      text-align: center;
-      transition: transform 0.3s ease;
-    }
-    .feature:hover {
-      transform: translateY(-5px);
-    }
-    .feature i {
-      font-size: 2.5rem;
-      color: #4fc3f7;
-      margin-bottom: 1rem;
-    }
-    footer {
-      background-color: #222;
-      color: #eee;
-      padding: 2rem;
-      text-align: center;
-    }
-    .whatsapp-float {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      background-color: #25d366;
-      color: white;
-      border-radius: 50%;
-      width: 55px;
-      height: 55px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 28px;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-      z-index: 1000;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Light Cleaner</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body { font-family: Arial, sans-serif; margin: 0; padding: 0; background: #f5f5f5; color: #333; }
+        header, footer { background-color: #009688; color: white; text-align: center; padding: 1em; }
+        nav a { margin: 0 15px; text-decoration: none; color: white; }
+        section { padding: 20px; }
+        .gallery img { width: 100%; max-width: 300px; margin: 10px; border-radius: 8px; }
+        .faq details { margin-bottom: 10px; }
+        .testimonial { background: white; padding: 10px; margin: 10px; border-left: 5px solid #009688; border-radius: 5px; }
+        form input, form select, form textarea { width: 100%; padding: 10px; margin: 5px 0; }
+        .map-container iframe { width: 100%; height: 300px; border: none; }
+        .language-switcher { position: absolute; top: 10px; right: 10px; }
+        .language-switcher button { margin-left: 5px; }
+    </style>
 </head>
 <body>
-  <header>
-    <h1>Light Cleaner</h1>
-    <nav>
-      <a href="#services">Services</a>
-      <a href="contact.html">Contact</a>
-    </nav>
-  </header>
 
-  <section class="hero">
-    <h1>Un lavage éclatant pour votre voiture</h1>
-    <p>Service rapide, propre et professionnel, à domicile ou en station</p>
-    <a href="contact.html" class="btn">Réservez maintenant</a>
-  </section>
+<header>
+    <h1>LIGHT CLEANER</h1>
+    <p>Votre véhicule, notre priorité</p>
+</header>
 
-  <section class="section" id="services">
-    <h2>Nos Services</h2>
-    <div class="features">
-      <div class="feature">
-        <i class="fas fa-car"></i>
-        <h3>Lavage extérieur</h3>
-        <p>Nettoyage soigné de la carrosserie avec produits écologiques</p>
-      </div>
-      <div class="feature">
-        <i class="fas fa-spray-can-sparkles"></i>
-        <h3>Nettoyage intérieur</h3>
-        <p>Aspiration, désinfection et soin des sièges et surfaces</p>
-      </div>
-      <div class="feature">
-        <i class="fas fa-house-user"></i>
-        <h3>Service à domicile</h3>
-        <p>Nous venons jusqu’à vous, où que vous soyez à Lomé</p>
-      </div>
-    </div>
-  </section>
+<div class="language-switcher">
+    <button>FR</button><button>EN</button><button>EWÉ</button>
+</div>
 
-  <footer>
-    <p>&copy; 2025 Light Cleaner - Tous droits réservés.</p>
-  </footer>
+<section>
+    <h2>Réservez un lavage</h2>
+    <form onsubmit="sendToWhatsApp(); return false;">
+        <input type="text" id="name" placeholder="Nom" required>
+        <input type="tel" id="phone" placeholder="Téléphone" required>
+        <input type="text" id="vehicle" placeholder="Type de véhicule">
+        <select id="service">
+            <option value="extérieur">Lavage extérieur</option>
+            <option value="intérieur">Lavage intérieur</option>
+            <option value="complet">Lavage complet</option>
+        </select>
+        <input type="date" id="date">
+        <input type="time" id="time">
+        <button type="submit">Réserver via WhatsApp</button>
+    </form>
+</section>
 
-  <a href="https://wa.me/22892470075?text=Bonjour%20LIGHT%20CLEANER%2C%20je%20souhaite%20r%C3%A9server%20un%20lavage%20de%20v%C3%A9hicule.%20Merci%20de%20me%20contacter." target="_blank" class="whatsapp-float">
-    <i class="fab fa-whatsapp"></i>
-  </a>
+<section>
+    <h2>Témoignages</h2>
+    <div class="testimonial">"Service impeccable, rapide et professionnel !" – Koffi</div>
+    <div class="testimonial">"Ma voiture n’a jamais été aussi propre." – Afi</div>
+    <div class="testimonial">"Je recommande vivement Light Cleaner." – Yao</div>
+</section>
+
+<section class="gallery">
+    <h2>Galerie Avant / Après</h2>
+    <img src="https://via.placeholder.com/300x200?text=Avant" alt="Avant">
+    <img src="https://via.placeholder.com/300x200?text=Après" alt="Après">
+    <img src="https://via.placeholder.com/300x200?text=Avant" alt="Avant">
+    <img src="https://via.placeholder.com/300x200?text=Après" alt="Après">
+</section>
+
+<section class="faq">
+    <h2>FAQ</h2>
+    <details><summary>Quels types de lavage proposez-vous ?</summary><p>Intérieur, extérieur et complet.</p></details>
+    <details><summary>Faites-vous des lavages à domicile ?</summary><p>Oui, dans certaines zones de Lomé.</p></details>
+    <details><summary>Quels sont les horaires ?</summary><p>Du lundi au samedi, 8h à 18h.</p></details>
+    <details><summary>Quels sont les tarifs ?</summary><p>Selon le service et le type de véhicule. Contactez-nous.</p></details>
+    <details><summary>Puis-je payer par Mobile Money ?</summary><p>Oui, TMoney et Flooz sont acceptés.</p></details>
+</section>
+
+<section class="map-container">
+    <h2>Nous localiser</h2>
+    <iframe src="https://www.google.com/maps?q=Be-Kpota,+Lomé,+Togo&output=embed"></iframe>
+</section>
+
+<footer>
+    <p>Contact : +228 92 47 00 75 | WhatsApp disponible</p>
+</footer>
+
+<script>
+    function sendToWhatsApp() {
+        var name = document.getElementById("name").value;
+        var phone = document.getElementById("phone").value;
+        var vehicle = document.getElementById("vehicle").value;
+        var service = document.getElementById("service").value;
+        var date = document.getElementById("date").value;
+        var time = document.getElementById("time").value;
+        var message = `Bonjour LIGHT CLEANER, je suis ${name} (${phone}). Je souhaite un ${service} pour un ${vehicle} le ${date} à ${time}. Merci.`;
+        var url = "https://wa.me/22892470075?text=" + encodeURIComponent(message);
+        window.open(url, '_blank').focus();
+    }
+</script>
+
 </body>
 </html>
