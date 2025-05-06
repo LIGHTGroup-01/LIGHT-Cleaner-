@@ -1,1 +1,50 @@
-<!-- Accueil avec accès Espace Client -->
+<!DOCTYPE html>
+<html lang="fr">
+<head><meta charset="UTF-8"><title>Réservations</title></head>
+<body>
+  <h1>Réserver un lavage</h1>
+  <form id="form">
+    <input type="text" id="service" placeholder="Type de lavage">
+    <input type="date" id="date">
+    <input type="time" id="time">
+    <button type="submit">Envoyer</button>
+  </form>
+  <ul id="bookings"></ul>
+  <script>
+    async function loadBookings() {
+      const res = await fetch('/api/bookings');
+      const data = await res.json();
+      const list = document.getElementById('bookings');
+      list.innerHTML = '';
+      data.forEach(b => {
+        const li = document.createElement('li');
+        li.textContent = b.service + ' - ' + b.date + ' à ' + b.time;
+        const btn = document.createElement('button');
+        btn.textContent = 'Annuler';
+        btn.onclick = async () => {
+          await fetch('/api/bookings/' + b.id, { method: 'DELETE' });
+          loadBookings();
+        };
+        li.appendChild(btn);
+        list.appendChild(li);
+      });
+    }
+
+    document.getElementById('form').onsubmit = async (e) => {
+      e.preventDefault();
+      await fetch('/api/bookings', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          service: document.getElementById('service').value,
+          date: document.getElementById('date').value,
+          time: document.getElementById('time').value
+        })
+      });
+      loadBookings();
+    };
+
+    loadBookings();
+  </script>
+</body>
+</html>
